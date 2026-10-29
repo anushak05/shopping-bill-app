@@ -25,7 +25,7 @@ jobs:
 
       - name: Run automated tests
         run: |
-          pytest test_app.py
+         python -m pytest test_app.py
 
       - name: Generate unique image tag
         id: meta
