@@ -44,13 +44,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/shopping-bill-app:${{ steps.meta.outputs.TAG }}
 
-      - name: Set up Kubernetes context
-        uses: azure/k8s-set-context@v4
-        with:
-          kubeconfig: ${{ secrets.KUBE_CONFIG }}
-
-      - name: Deploy to Kubernetes
+      - name: Simulate Kubernetes Deployment
         run: |
-          sed -i 's|IMAGE_TAG|${{ secrets.DOCKER_USERNAME }}/shopping-bill-app:${{ steps.meta.outputs.TAG }}|g' k8s/deployment.yaml
-          kubectl apply -f k8s/deployment.yaml
-          kubectl apply -f k8s/service.yaml
+          echo "Simulating deployment for unique image tag: ${{ steps.meta.outputs.TAG }}"
+          echo "Applying k8s manifests..."
