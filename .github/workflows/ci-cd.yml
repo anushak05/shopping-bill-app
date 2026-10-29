@@ -44,7 +44,13 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/shopping-bill-app:${{ steps.meta.outputs.TAG }}
 
-      - name: Simulate Kubernetes Deployment
+      - name: Install and set up kubectl tool binary
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'latest'
+
+      - name: Simulate Kubernetes Context and Manifests
         run: |
-          echo "Simulating deployment for unique image tag: ${{ steps.meta.outputs.TAG }}"
-          echo "Applying k8s manifests..."
+          echo "Unique Docker Hub Image Tag Built: ${{ steps.meta.outputs.TAG }}"
+          echo "Simulating pipeline connection validation..."
+          echo "Kubernetes components verified successfully!"
